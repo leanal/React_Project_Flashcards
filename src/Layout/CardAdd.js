@@ -12,7 +12,7 @@ export default function CardAdd() {
 
   useEffect(() => {
     const abortController = new AbortController();
-
+    
     if (!deckId) return `deckId is ${deckId}`;
     async function loadDeck() {
         const deckFromApi = await readDeck(deckId, abortController.signal)
@@ -33,7 +33,6 @@ export default function CardAdd() {
         front: front,
         back: back
     }
-    console.log("newCard",newCard)
     createCard(deckId, newCard)
     setFront("");
     setBack("");

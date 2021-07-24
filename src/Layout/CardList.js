@@ -4,6 +4,7 @@ import { deleteCard } from "../utils/api";
 
 export default function CardList({ cards, deckId }) {
   if (!cards) return `cards is ${cards}`;
+  if (!deckId) return `deckId is ${deckId}`;
 
   function deleteClickHandler(cardId) {
     const abortController = new AbortController();

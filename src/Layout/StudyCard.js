@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { readCard } from "../utils/api/index";
 
-export default function StudyCard({ cardIds, numberOfCards, deckName }) {
+export default function StudyCard({ cardIds, numberOfCards }) {
   const history = useHistory();
   const [flipped, setFlipped] = useState(false);
   const [cardIndex, setCardIndex] = useState(0);
   let index = cardIndex + 1;
   const [cardId, setCardId] = useState(cardIds[cardIndex]);
-
   const [card, setCard] = useState({});
 
   useEffect(() => {
@@ -22,7 +21,7 @@ export default function StudyCard({ cardIds, numberOfCards, deckName }) {
     }
 
     loadCard();
-    
+
     return () => abortController.abort(); // cancels pending request
   }, [cardId]);
 
