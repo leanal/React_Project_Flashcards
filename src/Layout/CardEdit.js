@@ -36,7 +36,7 @@ export default function CardEdit() {
     }
     
     loadCard();
-  }, []);
+  }, [cardId]);
 
   const frontChangeHandler = (event) => setFront(event.target.value);
   const backChangeHandler = (event) => setBack(event.target.value);
