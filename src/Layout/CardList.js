@@ -13,8 +13,7 @@ export default function CardList({ cards, deckId }) {
       const confirmDeletion = window.confirm("Delete this card?\n\nYou will not be able to recover it.");
 
       if (confirmDeletion) {
-        const deletedApi = await deleteCard(cardId, abortController.signal);
-        console.log(deletedApi);
+        await deleteCard(cardId, abortController.signal);
       }
     }
 
