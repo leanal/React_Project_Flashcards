@@ -5,11 +5,15 @@ import Breadcrumb from "./Breadcrumb";
 
 export default function DeckCreate() {
     const history = useHistory();
-    const [ name, setName ] = useState("");
-    const [ description, setDescription ] = useState("");
+    // const [ name, setName ] = useState("");
+    // const [ description, setDescription ] = useState("");
 
-    const handleNameChange = (event) => setName(event.target.value);
-    const handleDescriptionChange = (event) => setDescription(event.target.value);
+    const [deck, setDeck ] = useState({ name: "", description: "" })
+    const handleNameChange = (event) => setDeck({...deck, name: event.target.value })
+    const handleDescriptionChange = (event) => setDeck({...deck, description: event.target.value })
+
+    // const handleNameChange = (event) => setName(event.target.value);
+    // const handleDescriptionChange = (event) => setDescription(event.target.value);
     const handleCancelClick = (event) => {
         event.preventDefault();
         history.push("/");
@@ -18,8 +22,8 @@ export default function DeckCreate() {
         event.preventDefault();
         const abortController = new AbortController();
         const newDeck = {
-            name: name,
-            description: description
+            name: deck.name,
+            description: deck.description
         };
         const response = await createDeck(newDeck, abortController.signal);
         history.push(`/decks/${response.id}`)
@@ -39,7 +43,7 @@ export default function DeckCreate() {
                 placeholder="Deck Name"
                 required={true}
                 onChange={handleNameChange}
-                value={name}
+                value={deck.name}
               ></input>
             </div>
             <div className="form-group">
@@ -52,7 +56,7 @@ export default function DeckCreate() {
                 required={true} 
                 rows={4} 
                 onChange={handleDescriptionChange}
-                value={description}
+                value={deck.description}
               ></textarea>
             </div>
             <button type="button" className="btn btn-secondary" onClick={handleCancelClick}>Cancel</button><span>  </span>
