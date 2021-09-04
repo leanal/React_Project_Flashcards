@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Tests
+data/db.json
+src/__tests__
+
+# Other
+Instructions-Qualified.docx
+.qualified-attach.json
